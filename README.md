@@ -3,8 +3,6 @@
 <h1>🎨 Portfolio Website</h1>
 <p><em>My portfolio showcasing elegance with TailwindCSS & Framer Motion.</em></p>
 
-<a href="#download"><img src="https://img.shields.io/badge/download-green.svg"/></a>  <a href="#preview"><img src="https://img.shields.io/badge/live%20demo-blueviolet.svg"/></a>  <a href="#about-me"><img src="https://img.shields.io/badge/contact-yellowgreen.svg"/></a>
-
 </div>
 
 🌟 Overview
@@ -26,19 +24,17 @@ To check out how it looks live, visit my portfolio.
 📦 Installation
 Clone the repository and follow these steps:
 
-bash
-Копировать
+```bash
 git clone https://github.com/Pavel-glitch-ui/my-portfolio.git
 cd my-portfolio
 npm install # Install dependencies
 npm run dev   # Start local server
+```
 🔧 Development Plan
 Future improvements include:
 
-Adding more interactive sections such as blog posts or case studies.
-Enhancing SEO optimization techniques.
-Implementing dark mode toggle functionality.
-Upgrading to Next.js for better performance.
+-Adding more interactive sections such as blog posts or case studies.
+
 ❤ Support Me
 If you find value in what I've done here, consider supporting me through:
 
