@@ -1,4 +1,7 @@
-import { Card } from "../../__shared/ui";
+'use client';
+
+import { motion } from "framer-motion";
+import { Card, Button } from "../../__shared/ui";
 
 interface Project {
   title: string;
@@ -8,79 +11,69 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { 
-    title: "Eisenhower Matrix", 
-    tag: "DRAG AND DROP APPLICATION",
+  {
+    title: "Eisenhower Matrix",
+    tag: "PRODUCTIVITY TOOL",
     url: "https://github.com/Pavel-glitch-ui/todo-list",
-    description: "Productivity tool with drag and drop functionality"
+    description: "Drag-and-drop prioritization app built with Next.js and DnD Kit.",
   },
-  { 
-    title: "Auth-app", 
-    tag: "FULL AUTH APP USING NEXT AND NEXTAUTH!",
+  {
+    title: "Auth App",
+    tag: "SECURE PLATFORM",
     url: "https://github.com/Pavel-glitch-ui/AuthApp",
-    description: "Complete authentication system"
+    description: "Complete authentication starter with NextAuth, Prisma, and Tailwind.",
   },
-  { 
-    title: "Small Post Application", 
-    tag: "MY FIRST PROJECT BY THE WAY",
+  {
+    title: "Small Post Application",
+    tag: "FULLSTACK MVP",
     url: "https://github.com/Pavel-glitch-ui/Small-WebSite",
-    description: "My first full-stack project"
-  }
+    description: "Fast monorepo for publishing posts with live preview.",
+  },
 ];
 
 export function Projects() {
   return (
-    <div>
-      <h2 className="text-gray-400 uppercase text-sm tracking-wider mb-6">Projects</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <section id="projects" className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.3em] text-slate-400">My projects</p>
+          <h2 className="text-3xl font-semibold text-slate-900">Selected work</h2>
+        </div>
+        <Button variant="secondary" className="rounded-full px-6 py-2 text-sm">
+          View all
+        </Button>
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-3">
         {projects.map((project, index) => (
-          <a
-            key={index}
+          <motion.a
+            key={project.title}
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block group animate-fade-in-up"
-            style={{
-              animationDelay: `${index * 0.15}s`,
-            }}
+            className="block"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
           >
-            <Card className="h-full transition-all duration-300 hover:border-purple-500/50 hover:shadow-purple-500/20 hover:shadow-xl hover:scale-[1.02] cursor-pointer">
-              <div className="flex flex-col h-full">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-3">
-                    {project.tag}
-                  </p>
-                  {project.description && (
-                    <p className="text-sm text-gray-300 mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-                  )}
-                </div>
-                
-                {/* Gradient line indicator */}
-                <div className="mt-4 pt-4 border-t border-gray-700/50">
-                  <div className="flex items-center justify-between">
-                    <div className="w-full h-1 bg-linear-to-r from-purple-500/20 via-purple-400/40 to-transparent rounded-full overflow-hidden">
-                      <div className="h-full w-full bg-linear-to-r from-purple-500/30 via-purple-400/50 to-purple-300/30 rounded-full group-hover:from-purple-500/50 group-hover:via-purple-400/70 group-hover:to-purple-300/50 transition-all duration-300"></div>
-                    </div>
-                    <svg 
-                      className="ml-3 w-5 h-5 text-gray-400 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
+            <Card className="h-full hover:shadow-xl transition-shadow">
+              <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 mb-4 flex items-center justify-center text-slate-400">
+                Image placeholder
               </div>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
+                {project.tag}
+              </p>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
+              <p className="text-sm text-slate-500 mb-4">{project.description}</p>
+              <button className="text-sm font-semibold text-slate-900 inline-flex items-center gap-2">
+                View details
+                <span aria-hidden="true">→</span>
+              </button>
             </Card>
-          </a>
+          </motion.a>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

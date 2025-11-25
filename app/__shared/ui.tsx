@@ -8,7 +8,9 @@ interface CardProps {
 
 export function Card({ children, className = "", gradient = false }: CardProps) {
   const baseClasses = "glass-card p-6";
-  const gradientClasses = gradient ? "bg-gradient-to-br from-pink-500/20 to-purple-600/20" : "";
+  const gradientClasses = gradient
+    ? "bg-gradient-to-br from-slate-50 to-white border border-slate-200"
+    : "";
   
   return (
     <div className={`${baseClasses} ${gradientClasses} ${className}`}>
@@ -31,8 +33,8 @@ export function Button({
   onClick 
 }: ButtonProps) {
   const variants = {
-    primary: "bg-purple-600 hover:bg-purple-700 text-white",
-    secondary: "bg-gray-700 hover:bg-gray-600 text-white"
+    primary: "bg-slate-900 hover:bg-slate-800 text-white",
+    secondary: "bg-white border border-slate-300 hover:border-slate-400 text-slate-900"
   };
 
   return (
