@@ -1,37 +1,58 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
-import { Button } from "../../__shared/ui";
+import { useEffect, useState } from "react";
 
 export function Navigation() {
-  return (
-    <motion.nav
-      className="mb-12"
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-            Portfolio
-          </p>
-          <p className="text-lg font-semibold text-slate-900">
-            Alex Dev Studio
-          </p>
-        </div>
+  const [scrolled, setScrolled] = useState(false);
 
-        <div className="flex items-center gap-6 text-sm text-slate-500">
-          <a href="#work" className="hover:text-slate-900 transition-colors">
-            Work
-          </a>
-          <a href="#projects" className="hover:text-slate-900 transition-colors">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-slate-900 transition-colors">
-            Contact
-          </a>
-          <Button className="rounded-full px-5 py-2 text-sm">View my projects</Button>
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <motion.nav id="site-header"
+      className={
+        "sticky top-0 z-50 w-full transition-colors duration-300" +
+        (scrolled
+          ? " bg-white/60 backdrop-blur-md dark:bg-slate-300/60 border-b border-slate-200/40 rounded-b-md"
+          : " bg-transparent")
+      }
+      initial={{ opacity: 0, y: -18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+              Portfolio
+            </p>
+            <p className="text-lg font-semibold text-slate-900">
+              Pavel Full Stack Developer
+            </p>
+          </div>
+
+          <div className="flex items-center gap-6 text-sm text-slate-500">
+            <a href="#work" className="hover:text-slate-900 transition-colors">
+              Work
+            </a>
+            <a
+              href="#projects"
+              className="hover:text-slate-900 transition-colors"
+            >
+              Projects
+            </a>
+            <a href="#contact" className="hover:text-slate-900 transition-colors">
+              Contact
+            </a>
+          </div>
         </div>
       </div>
     </motion.nav>

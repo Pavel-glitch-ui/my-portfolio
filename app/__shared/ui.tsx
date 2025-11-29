@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface CardProps {
@@ -40,10 +41,44 @@ export function Button({
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-lg font-medium transition-colors ${variants[variant]} ${className}`}
+      className={className ? `${className}` : `px-6 py-3 rounded-lg font-medium transition-colors ${variants[variant]}`}
     >
       {children}
     </button>
+  );
+}
+interface ModalProps {
+  children?: ReactNode;
+  isOpen: boolean;
+  onClose?: () => void;
+}
+
+export function Modal({ children, isOpen, onClose }: ModalProps) {
+  if (!isOpen) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <motion.div
+  initial={{ scale: 0.95, opacity: 0, x: -30 }}
+  animate={{ scale: 1, opacity: 1, x: 0 }}
+  exit={{ scale: 0.95, opacity: 0, x: -30 }}
+  transition={{
+    type: "spring",
+    stiffness: 120,
+    damping: 12,
+  }}
+  onClick={(e) => e.stopPropagation()}
+  className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full"
+>
+  {children}
+</motion.div>
+    </motion.div>
   );
 }
 

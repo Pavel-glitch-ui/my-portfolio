@@ -6,6 +6,5 @@ export * from './ui/Projects';
 export * from './ui/Skills';
 export * from './ui/skillsHeader';
 export * from './ui/SocialLinks';
-export * from './ui/StatsCards';
 export * from './ui/Testimonials';
 export * from './ui/ContactSection';
