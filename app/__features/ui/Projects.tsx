@@ -55,35 +55,70 @@ export function Projects() {
         </Button>
       </div>
 
-      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300 cursor-pointer group">
-              {project.imageUrl ? (<Image src={project.imageUrl} alt={`${project.tag}`} width={400} height={800} className="rounded-xl aspect-video bg-slate-100 border border-slate-200 mb-2 object-cover"/>) : <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 mb-2 flex items-center justify-center text-slate-400">
-                <span className="p-3">Sorry, but no images were found, but you can always view the code on Github </span>
-              </div>}
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
-                {project.tag}
-              </p>
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
-              <p className="text-xs sm:text-sm text-slate-500 mb-4">{project.description}</p>
-              <motion.button
-                className="text-xs sm:text-sm font-semibold text-slate-900 inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
-                onClick={() => setSelectedProject(project)}
-                whileHover={{ x: 4 }}
-              >
-                View details
-                <span aria-hidden="true">→</span>
-              </motion.button>
-            </Card>
-          </motion.div>
-        ))}
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-x-auto pb-4 sm:overflow-x-visible">
+        <div className="hidden sm:contents">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300 cursor-pointer group">
+                {project.imageUrl ? (<Image src={project.imageUrl} alt={`${project.tag}`} width={400} height={800} className="rounded-xl aspect-video bg-slate-100 border border-slate-200 mb-2 object-cover"/>) : <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 mb-2 flex items-center justify-center text-slate-400">
+                  <span className="p-3">Sorry, but no images were found, but you can always view the code on Github </span>
+                </div>}
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
+                  {project.tag}
+                </p>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-500 mb-4">{project.description}</p>
+                <motion.button
+                  className="text-xs sm:text-sm font-semibold text-slate-900 inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+                  onClick={() => setSelectedProject(project)}
+                  whileHover={{ x: 4 }}
+                >
+                  View details
+                  <span aria-hidden="true">→</span>
+                </motion.button>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Мобильный скролл */}
+        <div className="sm:hidden flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              className="shrink-0 w-[85vw] max-w-sm snap-center"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300 cursor-pointer group">
+                {project.imageUrl ? (<Image src={project.imageUrl} alt={`${project.tag}`} width={400} height={800} className="rounded-xl aspect-video bg-slate-100 border border-slate-200 mb-2 object-cover"/>) : <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 mb-2 flex items-center justify-center text-slate-400">
+                  <span className="p-3 text-xs">Sorry, but no images were found, but you can always view the code on Github </span>
+                </div>}
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
+                  {project.tag}
+                </p>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">{project.title}</h3>
+                <p className="text-xs text-slate-500 mb-4">{project.description}</p>
+                <motion.button
+                  className="text-xs font-semibold text-slate-900 inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+                  onClick={() => setSelectedProject(project)}
+                  whileHover={{ x: 4 }}
+                >
+                  View details
+                  <span aria-hidden="true">→</span>
+                </motion.button>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <Modal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>

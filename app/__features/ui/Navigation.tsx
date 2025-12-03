@@ -21,7 +21,7 @@ export function Navigation() {
       className={
         "sticky top-0 z-50 w-full transition-colors duration-300" +
         (scrolled
-          ? " bg-white/60 backdrop-blur-md dark:bg-slate-300/60 border-b border-slate-200/40 rounded-b-md"
+          ? " bg-white/50 sm:bg-white/60 backdrop-blur-lg sm:backdrop-blur-md dark:bg-slate-300/50 sm:dark:bg-slate-300/60 border-b border-slate-200/40 rounded-b-md"
           : " bg-transparent")
       }
       initial={{ opacity: 0, y: -18 }}

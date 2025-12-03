@@ -31,24 +31,48 @@ export function Testimonials() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        {testimonials.map((testimonial, index) => (
-          <motion.div
-            key={testimonial.author}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300">
-              <div className="mb-4">
-                <div className="font-semibold text-slate-900">{testimonial.author}</div>
-                <div className="text-sm text-slate-500">{testimonial.role}</div>
-              </div>
-              <p className="text-slate-600 mb-4 italic">“{testimonial.quote}”</p>
-            </Card>
-          </motion.div>
-        ))}
+      <div className="grid gap-6 md:grid-cols-3 overflow-x-auto pb-4 sm:overflow-x-visible">
+        <div className="hidden sm:contents">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.author}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300">
+                <div className="mb-4">
+                  <div className="font-semibold text-slate-900">{testimonial.author}</div>
+                  <div className="text-sm text-slate-500">{testimonial.role}</div>
+                </div>
+                <p className="text-slate-600 mb-4 italic">"{testimonial.quote}"</p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Мобильный скролл */}
+        <div className="sm:hidden flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.author}
+              className="shrink-0 w-[85vw] max-w-sm snap-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300">
+                <div className="mb-4">
+                  <div className="font-semibold text-slate-900">{testimonial.author}</div>
+                  <div className="text-sm text-slate-500">{testimonial.role}</div>
+                </div>
+                <p className="text-slate-600 mb-4 italic">"{testimonial.quote}"</p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
