@@ -54,7 +54,7 @@ export function Projects() {
           View all
         </Button>
       </div>
-
+      { /* Desktop */ }
       <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-x-auto pb-4 sm:overflow-x-visible">
         <div className="hidden sm:contents">
           {projects.map((project, index) => (
@@ -87,8 +87,8 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Мобильный скролл */}
-        <div className="sm:hidden flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory">
+        {/* Mobile */}
+        <div className="sm:hidden flex gap-4 overflow-y-auto overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
