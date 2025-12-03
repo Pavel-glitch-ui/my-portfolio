@@ -31,7 +31,8 @@ export function Button({
   children, 
   variant = "primary", 
   className = "",
-  onClick 
+  onClick,
+  ...props 
 }: ButtonProps) {
   const variants = {
     primary: "bg-slate-900 hover:bg-slate-800 text-white",
@@ -65,17 +66,17 @@ export function Modal({ children, isOpen, onClose }: ModalProps) {
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
     >
       <motion.div
-  initial={{ scale: 0.95, opacity: 0, x: -30 }}
-  animate={{ scale: 1, opacity: 1, x: 0 }}
-  exit={{ scale: 0.95, opacity: 0, x: -30 }}
-  transition={{
-    type: "spring",
-    stiffness: 120,
-    damping: 12,
-  }}
-  onClick={(e) => e.stopPropagation()}
-  className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full"
->
+        initial={{ scale: 0.95, opacity: 0, x: -30 }}
+        animate={{ scale: 1, opacity: 1, x: 0 }}
+        exit={{ scale: 0.95, opacity: 0, x: -30 }}
+        transition={{
+          type: "spring",
+          stiffness: 120,
+          damping: 12,
+        }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full"
+      >
   {children}
 </motion.div>
     </motion.div>

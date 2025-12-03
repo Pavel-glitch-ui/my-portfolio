@@ -5,12 +5,12 @@ import { Card } from "../../__shared/ui";
 
 const testimonials = [
   {
-    quote: "Alex helped us create an interface that radically improved our workflow.",
+    quote: "Pavel helped us create an interface that radically improved our workflow.",
     author: "Marta Flores",
     role: "Product Lead, VibeLabs",
   },
   {
-    quote: "Lorem ipsum dolor sit amet. Consectetuer adipiscing elit. Sear in ocio accesa.",
+    quote: "Their expertise in both frontend and backend development made the collaboration seamless.",
     author: "Daniel Kim",
     role: "CTO, Softcraft",
   },
@@ -40,7 +40,7 @@ export function Testimonials() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="h-full">
+            <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300">
               <p className="text-slate-600 mb-4 italic">“{testimonial.quote}”</p>
               <div>
                 <div className="font-semibold text-slate-900">{testimonial.author}</div>
