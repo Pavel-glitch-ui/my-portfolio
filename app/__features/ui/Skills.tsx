@@ -29,7 +29,7 @@ const benefits = [
 
 export function Skills() {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2">
       {benefits.map((benefit, index) => {
         const Icon = benefit.icon;
         return (
@@ -44,14 +44,14 @@ export function Skills() {
             <Card className="h-full transition-shadow duration-300 hover:shadow-2xl">
               <div className="flex flex-col gap-3">
                 <motion.div
-                  className="text-4xl text-slate-700 cursor-pointer w-fit"
+                  className="text-3xl sm:text-4xl text-slate-700 cursor-pointer w-fit"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                 >
                   <Icon />
                 </motion.div>
-                <h3 className="text-lg font-semibold text-slate-900">{benefit.title}</h3>
-                <p className="text-slate-500 text-sm">{benefit.description}</p>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">{benefit.title}</h3>
+                <p className="text-slate-500 text-xs sm:text-sm">{benefit.description}</p>
               </div>
             </Card>
           </motion.div>

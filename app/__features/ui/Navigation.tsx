@@ -28,18 +28,18 @@ export function Navigation() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
               Portfolio
             </p>
-            <p className="text-lg font-semibold text-slate-900">
+            <p className="text-base sm:text-lg font-semibold text-slate-900">
               Pavel Full Stack Developer
             </p>
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-slate-500">
+          <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-500">
             <a href="#work" className="hover:text-slate-900 transition-colors">
               Work
             </a>

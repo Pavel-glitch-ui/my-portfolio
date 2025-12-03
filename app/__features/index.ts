@@ -1,5 +1,4 @@
 export * from './ui/About';
-export * from './ui/GoalCategory';
 export * from './ui/Hero';
 export * from './ui/Navigation';
 export * from './ui/Projects';

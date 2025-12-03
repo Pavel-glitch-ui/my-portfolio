@@ -25,10 +25,10 @@ export function Testimonials() {
   return (
     <section className="space-y-6" id="testimonials">
       <div>
+        <h2 className="text-3xl font-semibold text-slate-900 mb-2">Trusted by teams</h2>
         <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
           Client testimonials
         </p>
-        <h2 className="text-3xl font-semibold text-slate-900">Trusted by teams</h2>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -41,11 +41,11 @@ export function Testimonials() {
             transition={{ delay: index * 0.1 }}
           >
             <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300">
-              <p className="text-slate-600 mb-4 italic">“{testimonial.quote}”</p>
-              <div>
+              <div className="mb-4">
                 <div className="font-semibold text-slate-900">{testimonial.author}</div>
                 <div className="text-sm text-slate-500">{testimonial.role}</div>
               </div>
+              <p className="text-slate-600 mb-4 italic">“{testimonial.quote}”</p>
             </Card>
           </motion.div>
         ))}

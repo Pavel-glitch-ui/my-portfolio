@@ -45,17 +45,17 @@ export function Projects() {
 
   return (
     <section id="projects" className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.3em] text-slate-400">My projects</p>
-          <h2 className="text-3xl font-semibold text-slate-900">Selected work</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-2">My projects</h2>
+          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-slate-400">Selected works</p>
         </div>
-        <Button variant="secondary" className="rounded-full px-6 py-2 text-sm">
+        <Button variant="secondary" className="rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm w-full sm:w-auto">
           View all
         </Button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -65,16 +65,16 @@ export function Projects() {
             transition={{ delay: index * 0.1 }}
           >
             <Card className="h-full hover:shadow-xl hover:translate-y-[-5px] duration-300 cursor-pointer group">
-              {project.imageUrl ? (<Image src={project.imageUrl} alt={`${project.tag}`} width={400} height={800} className="rounded-xl aspect-video bg-slate-100 border border-slate-200 mb-2 object-cover"/>) : <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 mb-4 flex items-center justify-center text-slate-400">
+              {project.imageUrl ? (<Image src={project.imageUrl} alt={`${project.tag}`} width={400} height={800} className="rounded-xl aspect-video bg-slate-100 border border-slate-200 mb-2 object-cover"/>) : <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 mb-2 flex items-center justify-center text-slate-400">
                 <span className="p-3">Sorry, but no images were found, but you can always view the code on Github </span>
               </div>}
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
                 {project.tag}
               </p>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
-              <p className="text-sm text-slate-500 mb-4">{project.description}</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-500 mb-4">{project.description}</p>
               <motion.button
-                className="text-sm font-semibold text-slate-900 inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+                className="text-xs sm:text-sm font-semibold text-slate-900 inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
                 onClick={() => setSelectedProject(project)}
                 whileHover={{ x: 4 }}
               >
@@ -88,35 +88,35 @@ export function Projects() {
 
       <Modal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>
         {selectedProject && (
-          <div className="flex flex-col md:flex-row gap-6 p-8 max-h-[80vh] overflow-y-auto">
+          <div className="flex flex-col md:flex-row gap-4 sm:gap-6 p-4 sm:p-8 max-h-[90vh] overflow-y-auto">
             {/* Left Column - Content */}
             <div className="flex-1 flex flex-col justify-between min-w-0">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">
                   {selectedProject.tag}
                 </p>
-                <h2 className="text-3xl font-semibold text-slate-900 mb-4">{selectedProject.title}</h2>
-                <p className="text-slate-600 mb-4">{selectedProject.description}</p>
+                <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3 sm:mb-4">{selectedProject.title}</h2>
+                <p className="text-sm sm:text-base text-slate-600 mb-3 sm:mb-4">{selectedProject.description}</p>
                 {selectedProject.InDepthDescription && (
-                  <p className="text-slate-500 whitespace-pre-line mb-6 text-sm leading-relaxed">
+                  <p className="text-slate-500 whitespace-pre-line mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
                     {selectedProject.InDepthDescription}
                   </p>
                 )}
               </div>
               
               {/* Buttons */}
-              <div className="flex gap-4 flex-wrap">
+              <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
                 <a
                   href={selectedProject.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors text-sm sm:text-base text-center"
                 >
                   View on GitHub
                 </a>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-6 py-3 border border-slate-200 text-slate-900 rounded-lg font-medium hover:border-slate-400 transition-colors"
+                  className="px-4 sm:px-6 py-2 sm:py-3 border border-slate-200 text-slate-900 rounded-lg font-medium hover:border-slate-400 transition-colors text-sm sm:text-base text-center"
                 >
                   Close
                 </button>
@@ -135,13 +135,13 @@ export function Projects() {
                   <Image
                     src={selectedProject.imageUrl}
                     alt={selectedProject.tag}
-                    className="w-auto h-auto object-contain"
+                    className="w-auto h-auto object-contain max-w-full"
                     priority
                   />
                 </motion.div>
               ) : (
-                <div className="w-full h-64 md:h-96 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 shadow-inner">
-                  <span className="p-3">Sorry, but no images were found, but you can always view the code on Github</span>
+                <div className="w-full h-48 sm:h-96 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 shadow-inner">
+                  <span className="p-3 text-xs sm:text-sm text-center">Sorry, but no images were found, but you can always view the code on Github</span>
                 </div>
               )}
             </div>
