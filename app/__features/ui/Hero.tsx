@@ -20,7 +20,7 @@ const item = {
 export function Hero() {
   return (
     <section className="relative rounded-2xl sm:rounded-4xl bg-white/70 backdrop-blur-xl shadow-xl p-6 sm:p-10 lg:flex lg:items-center lg:justify-between overflow-hidden">
-      {/* Фон с градиентом */}
+      {/* Gradient background */}
       <div className="absolute inset-0 bg-linear-to-tr from-indigo-100 via-pink-50 to-white opacity-60 pointer-events-none" />
 
       <motion.div
