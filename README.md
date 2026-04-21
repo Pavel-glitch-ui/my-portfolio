@@ -27,7 +27,7 @@ Clone the repository and follow these steps:
 ```bash
 git clone https://github.com/Pavel-glitch-ui/my-portfolio.git
 cd my-portfolio
-npm install # Install dependencies
+pnpm install # Install dependencies
 npm run dev   # Start local server
 ```
 🔧 Development Plan
