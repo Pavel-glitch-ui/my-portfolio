@@ -5,6 +5,7 @@ import { Card, Button, Modal } from "../../__shared/ui";
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import TodoImg from '../../imgs/todo-list.png'
+import WarInfoImg from '../../imgs/warinfo.png'
 
 interface Project {
   title: string;
@@ -13,6 +14,7 @@ interface Project {
   description?: string;
   InDepthDescription?: string;
   imageUrl?: StaticImageData | string;
+  webLink?: string;
 }
 
 const projects: Project[] = [
@@ -22,7 +24,17 @@ const projects: Project[] = [
     url: "https://github.com/Pavel-glitch-ui/todo-list",
     description: "Drag-and-drop prioritization app built with Next.js and DnD Kit.",
     imageUrl: TodoImg,
-    InDepthDescription: "The Eisenhower Matrix app helps users organize tasks by urgency and importance using a drag-and-drop interface. Built with Next.js for the frontend and DnD Kit for seamless drag-and-drop functionality, it offers a user-friendly experience to boost productivity."
+    InDepthDescription: "The Eisenhower Matrix app helps users organize tasks by urgency and importance using a drag-and-drop interface. Built with Next.js for the frontend and DnD Kit for seamless drag-and-drop functionality, it offers a user-friendly experience to boost productivity.",
+    webLink: "https://todo-list-nu-azure-14.vercel.app"
+  },
+   {
+    title: "War-Info",
+    tag: "DASHBOARD FOR ADMIN",
+    url: "https://github.com/Pavel-glitch-ui/war_info",
+    description: "Dashboard app built with Next.js and zustand.",
+    imageUrl: WarInfoImg,
+    InDepthDescription: "WARINFO app helps admins to watch the latest changes and news about warpoint clients. Built with Next.js for the frontend and zustand form mock data functionality, it offers a user-friendly experience to boost productivity.",
+    webLink: "https://war-info-gules.vercel.app"
   },
   {
     title: "Auth App",
@@ -50,9 +62,6 @@ export function Projects() {
           <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-2">My projects</h2>
           <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-slate-400">Selected works</p>
         </div>
-        <Button variant="secondary" className="rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm w-full sm:w-auto">
-          View all
-        </Button>
       </div>
       { /* Desktop */ }
       <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-x-auto pb-4 sm:overflow-x-visible">
@@ -149,6 +158,14 @@ export function Projects() {
                 >
                   View on GitHub
                 </a>
+                {selectedProject.webLink && (<a
+                  href={selectedProject.webLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-slate-700 text-white rounded-lg font-medium hover:bg-slate-500 transition-colors text-sm sm:text-base text-center"
+                >
+                  View website prewiev
+                </a>)}
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="px-4 sm:px-6 py-2 sm:py-3 border border-slate-200 text-slate-900 rounded-lg font-medium hover:border-slate-400 transition-colors text-sm sm:text-base text-center"

@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { Button } from "../../__shared/ui";
 import { useCallback } from "react";
-
+import Image from "next/image";
+import img from '../../imgs/PavelImg.jpg'
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -91,15 +92,24 @@ export function Hero() {
       </motion.div>
 
       <motion.div
-        className="mt-10 lg:mt-0 w-48 h-48 md:w-64 md:h-64 rounded-full bg-slate-100 border border-slate-200 overflow-hidden relative mx-auto shadow-lg hover:scale-105 transition-transform"
+        className="mt-10 lg:mt-0 relative"
         initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ ease: 'easeInOut', duration: 0.6, delay: 0.4, type: "spring", stiffness: 80 }}
       >
-        <div className="absolute inset-6 rounded-full bg-slate-200" />
-        <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-semibold">
-          Your photo
+        <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full p-1 bg-linear-to-tr from-pink-500 via-purple-500 to-indigo-500 shadow-2xl hover:scale-105 transition-transform duration-500 mx-auto">
+          <div className="w-full h-full rounded-full border-4 border-white overflow-hidden relative bg-slate-100">
+            <Image
+              src={img}
+              alt="Pavel"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
+        {/* Decorative background glow */}
+        <div className="absolute -inset-4 bg-indigo-500/20 blur-3xl -z-10 rounded-full opacity-50" />
       </motion.div>
     </section>
   );
